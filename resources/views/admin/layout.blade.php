@@ -25,6 +25,42 @@
         form.auth button { width: 100%; padding: 10px; background: #111827; color: #f9fafb; border: 0; border-radius: 6px; cursor: pointer; font: inherit; font-weight: 500; }
         form.auth button:hover { background: #1f2937; }
         .error { color: #b91c1c; font-size: 13px; margin: -10px 0 10px; }
+        .flash { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; padding: 10px 14px; border-radius: 8px; margin-bottom: 16px; font-size: 14px; }
+        .toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+        .toolbar h1 { margin: 0; font-size: 20px; }
+        .toolbar form { display: flex; gap: 8px; align-items: center; }
+        .toolbar input[type=search], .toolbar select { padding: 7px 10px; border: 1px solid #d1d5db; border-radius: 6px; font: inherit; }
+        .btn { display: inline-block; padding: 8px 14px; background: #111827; color: #f9fafb; border: 0; border-radius: 6px; font: inherit; cursor: pointer; text-decoration: none; }
+        .btn:hover { background: #1f2937; }
+        .btn.secondary { background: #e5e7eb; color: #111827; }
+        .btn.secondary:hover { background: #d1d5db; }
+        .btn.danger { background: #b91c1c; }
+        .btn.danger:hover { background: #991b1b; }
+        .btn.sm { padding: 5px 10px; font-size: 13px; }
+        table.list { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; }
+        table.list th, table.list td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+        table.list th { background: #f9fafb; font-weight: 600; color: #374151; }
+        table.list tr:last-child td { border-bottom: 0; }
+        table.list a { color: #1d4ed8; text-decoration: none; }
+        table.list a:hover { text-decoration: underline; }
+        .pill { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 500; }
+        .pill.active { background: #d1fae5; color: #065f46; }
+        .pill.pending { background: #fef3c7; color: #92400e; }
+        .pill.expired { background: #fee2e2; color: #991b1b; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 20px; }
+        .form-grid .full { grid-column: 1 / -1; }
+        .form-grid label { display: block; font-size: 13px; margin-bottom: 4px; color: #374151; }
+        .form-grid input, .form-grid select { width: 100%; padding: 8px 11px; border: 1px solid #d1d5db; border-radius: 6px; font: inherit; }
+        .form-actions { display: flex; gap: 10px; margin-top: 20px; }
+        dl.detail { display: grid; grid-template-columns: 150px 1fr; gap: 8px 20px; margin: 0; }
+        dl.detail dt { color: #6b7280; font-size: 13px; }
+        dl.detail dd { margin: 0; font-size: 14px; }
+        .empty { padding: 40px; text-align: center; color: #6b7280; background: #fff; border: 1px dashed #d1d5db; border-radius: 10px; }
+        .pagination { margin-top: 16px; display: flex; gap: 6px; justify-content: center; font-size: 14px; }
+        .pagination a, .pagination span { padding: 6px 10px; border-radius: 6px; text-decoration: none; color: #374151; }
+        .pagination a:hover { background: #e5e7eb; }
+        .pagination .active span { background: #111827; color: #f9fafb; }
+        .pagination .disabled span { color: #9ca3af; }
     </style>
 </head>
 <body>
@@ -32,6 +68,8 @@
         <header>
             <div class="brand">{{ config('app.name') }} · Admin</div>
             <nav>
+                <a href="{{ route('admin.dashboard') }}" style="color:#f9fafb;text-decoration:none;margin-right:16px;font-size:14px;">Dashboard</a>
+                <a href="{{ route('admin.members.index') }}" style="color:#f9fafb;text-decoration:none;margin-right:16px;font-size:14px;">Members</a>
                 <span style="margin-right:12px;font-size:14px;color:#9ca3af;">{{ auth('admin')->user()->name }}</span>
                 <form method="POST" action="{{ route('admin.logout') }}">
                     @csrf
@@ -41,6 +79,9 @@
         </header>
     @endauth
     <main>
+        @if (session('status'))
+            <div class="flash">{{ session('status') }}</div>
+        @endif
         {{ $slot ?? '' }}
         @yield('content')
     </main>
