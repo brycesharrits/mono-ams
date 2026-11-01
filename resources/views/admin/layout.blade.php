@@ -70,6 +70,7 @@
             <nav>
                 <a href="{{ route('admin.dashboard') }}" style="color:#f9fafb;text-decoration:none;margin-right:16px;font-size:14px;">Dashboard</a>
                 <a href="{{ route('admin.members.index') }}" style="color:#f9fafb;text-decoration:none;margin-right:16px;font-size:14px;">Members</a>
+                <a href="{{ route('admin.committees.index') }}" style="color:#f9fafb;text-decoration:none;margin-right:16px;font-size:14px;">Committees</a>
                 <span style="margin-right:12px;font-size:14px;color:#9ca3af;">{{ auth('admin')->user()->name }}</span>
                 <form method="POST" action="{{ route('admin.logout') }}">
                     @csrf
