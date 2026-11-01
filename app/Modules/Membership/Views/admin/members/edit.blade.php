@@ -9,7 +9,7 @@
     <div class="card">
         <form method="POST" action="{{ route('admin.members.update', $member) }}">
             @method('PUT')
-            @include('admin.members._form', [
+            @include('membership::admin.members._form', [
                 'submitLabel' => 'Save changes',
                 'cancelUrl' => route('admin.members.show', $member),
             ])

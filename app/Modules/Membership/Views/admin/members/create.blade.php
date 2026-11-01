@@ -8,7 +8,7 @@
 
     <div class="card">
         <form method="POST" action="{{ route('admin.members.store') }}">
-            @include('admin.members._form', [
+            @include('membership::admin.members._form', [
                 'submitLabel' => 'Create member',
                 'cancelUrl' => route('admin.members.index'),
             ])

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Member;
+use App\Modules\Membership\Models\Member;
 use Illuminate\View\View;
 
 class DashboardController extends Controller

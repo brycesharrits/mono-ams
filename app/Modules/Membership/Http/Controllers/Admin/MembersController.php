@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Modules\Membership\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Member;
+use App\Modules\Membership\Models\Member;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -32,7 +32,7 @@ class MembersController extends Controller
             ->paginate(20)
             ->withQueryString();
 
-        return view('admin.members.index', [
+        return view('membership::admin.members.index', [
             'members' => $members,
             'statuses' => self::STATUSES,
             'filters' => [
@@ -44,7 +44,7 @@ class MembersController extends Controller
 
     public function create(): View
     {
-        return view('admin.members.create', [
+        return view('membership::admin.members.create', [
             'member' => new Member(['status' => 'active']),
             'statuses' => self::STATUSES,
         ]);
@@ -62,12 +62,12 @@ class MembersController extends Controller
 
     public function show(Member $member): View
     {
-        return view('admin.members.show', ['member' => $member]);
+        return view('membership::admin.members.show', ['member' => $member]);
     }
 
     public function edit(Member $member): View
     {
-        return view('admin.members.edit', [
+        return view('membership::admin.members.edit', [
             'member' => $member,
             'statuses' => self::STATUSES,
         ]);

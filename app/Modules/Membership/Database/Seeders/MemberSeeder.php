@@ -1,8 +1,8 @@
 <?php
 
-namespace Database\Seeders;
+namespace App\Modules\Membership\Database\Seeders;
 
-use App\Models\Member;
+use App\Modules\Membership\Models\Member;
 use Illuminate\Database\Seeder;
 
 class MemberSeeder extends Seeder

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Modules\Membership\Database\Seeders\MemberSeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 

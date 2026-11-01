@@ -1,8 +1,8 @@
 <?php
 
-namespace Database\Factories;
+namespace App\Modules\Membership\Database\Factories;
 
-use App\Models\Member;
+use App\Modules\Membership\Models\Member;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -10,11 +10,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class MemberFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = Member::class;
+
     public function definition(): array
     {
         return [
